@@ -1,17 +1,17 @@
 require 'bundler'
 Bundler.require
 
-require './models/BookModel'
-require './controllers/BookController'
-require './models/CdModel'
-require './controllers/CdController'
+require './models/PostModel'
+require './controllers/PostController'
+require './models/CommentModel'
+require './controllers/CommentController'
 
 run Sinatra::Application
 
 ActiveRecord::Base.establish_connection(
   :adapter => 'postgresql',
-  :database => 'library'
+  :database => 'blog'
 )
 
-map('/books'){run BookController}
-map('/cds'){run CdController}
+map('/posts'){run PostController}
+map('/comments'){run CommentController}
