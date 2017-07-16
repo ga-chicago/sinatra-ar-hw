@@ -1,19 +1,19 @@
 class AlbumController < Sinatra::Base
 
 
-	get '/albums' do
+	get '/' do
 		 
 		 albums = Record.all
 		 albums.to_json	
 	end
 
-	get '/albums/:id' do
+	get '/:id' do
 		id = params[:id]
 		album = Record.find(id)
 		album.to_json	
 	end
 
-	post '/albums' do
+	post '/' do
 
 		new_album = JSON.parse(request.body.read)
 		album = Record.new(new_album)
@@ -23,7 +23,7 @@ class AlbumController < Sinatra::Base
 		"success"
 	end
 
-	patch '/albums/:id' do
+	patch '/:id' do
 		id = params[:id]
 		album = Record.find(id)
 		updated_album = JSON.parse(request.body.read)
@@ -35,7 +35,7 @@ class AlbumController < Sinatra::Base
 
 	end
 
-	delete '/albums/:id' do
+	delete '/:id' do
 
 		id = params[:id]
 		album = Record.find(id)

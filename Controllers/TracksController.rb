@@ -1,19 +1,19 @@
 class TracksController < Sinatra::Base
 
-get '/tracks'  do
-
+get '/'  do
+	
 	tracks = Track.all
 	tracks.to_json
 	
 end
 
-get '/tracks/:id' do
+get '/:id' do
 	id = params[:id]
 	track = Track.find(id)
 	track.to_json
 end
 
-post '/tracks' do
+post '/' do
 
 	new_track = JSON.parse(request.body.read)
 	track = Track.new(new_track)
@@ -23,9 +23,23 @@ post '/tracks' do
 	"success"
 end
 
+patch '/:id' do
+	id = params[:id]
+	track = Track.find(id)
+	updated_track = JSON.parse(request.body.read)
+	track.update_attributes(updated_track)
+	track.save
+	track.to_json
+end
 
+delete '/:id' do
 
-
-
+	id = params[:id]
+	track = Track.find(id)
+	track.destroy
+	tracks = Track.all
+	tracks.to_json
+	"success"
+end
 
 end
