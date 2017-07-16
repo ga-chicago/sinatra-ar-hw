@@ -2,12 +2,13 @@ class AlbumController < Sinatra::Base
 
 
 	get '/' do
-		 
+		 response['Access-Control-Allow-Origin'] = '*'
 		 albums = Record.all
 		 albums.to_json	
 	end
 
 	get '/:id' do
+		response['Access-Control-Allow-Origin'] = '*'
 		id = params[:id]
 		album = Record.find(id)
 		album.to_json	
@@ -15,6 +16,7 @@ class AlbumController < Sinatra::Base
 
 	post '/' do
 
+		response['Access-Control-Allow-Origin'] = '*'
 		new_album = JSON.parse(request.body.read)
 		album = Record.new(new_album)
 		album.save
@@ -24,6 +26,7 @@ class AlbumController < Sinatra::Base
 	end
 
 	patch '/:id' do
+		response['Access-Control-Allow-Origin'] = '*'
 		id = params[:id]
 		album = Record.find(id)
 		updated_album = JSON.parse(request.body.read)
@@ -36,7 +39,7 @@ class AlbumController < Sinatra::Base
 	end
 
 	delete '/:id' do
-
+		response['Access-Control-Allow-Origin'] = '*'
 		id = params[:id]
 		album = Record.find(id)
 		album.destroy
