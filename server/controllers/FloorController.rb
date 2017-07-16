@@ -1,9 +1,13 @@
 class FloorController < Sinatra::Base
 	get '/' do
+		response["Access-Control-Allow-Origin"] = "*"
+		content_type :json
 		Floor.all.to_json
 	end
 
 	get '/:id' do
+		response["Access-Control-Allow-Origin"] = "*"
+		content_type :json
 		id = params[:id]
 		Floor.find(id).to_json
 	end

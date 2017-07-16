@@ -1,9 +1,13 @@
 class PersonController < Sinatra::Base
 	get '/' do
+		response["Access-Control-Allow-Origin"] = "*"
+		content_type :json
 		Person.all.to_json
 	end
 
 	get '/:id' do
+		response["Access-Control-Allow-Origin"] = "*"
+		content_type :json
 		id = params[:id]
 		Person.find(id).to_json
 	end
