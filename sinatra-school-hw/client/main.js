@@ -8,8 +8,8 @@ $.ajax({
   }
 })
 
-$('.link').click(function(e){
-  e.preventDefault
+$('body').on('click', '.link', function(e){
+  e.preventDefault();
   var postUrl = $(e.target).attr('href')
 
   $.ajax({
