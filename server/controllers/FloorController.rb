@@ -9,7 +9,9 @@ class FloorController < Sinatra::Base
 		response["Access-Control-Allow-Origin"] = "*"
 		content_type :json
 		id = params[:id]
-		Floor.find(id).to_json
+		floor = Floor.find(id)
+		people = floor.people
+		{floor: floor, people: people}.to_json
 	end
 
 	post '/' do
