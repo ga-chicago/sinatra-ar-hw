@@ -21,3 +21,23 @@ INSERT INTO people (name, room_number, floor_number) VALUES ('Sally', 2130, 2);
 INSERT INTO people (name, room_number, floor_number) VALUES ('Randy', 2131, 2);
 
 INSERT INTO people (name, room_number, floor_number) VALUES ('Vincent', 4777, 3);
+
+CREATE TABLE amenities (id SERIAL PRIMARY KEY, name VARCHAR(255), price MONEY);
+
+INSERT INTO amenities (name, price) VALUES ('Pool', 12.00);
+
+INSERT INTO amenities (name, price) VALUES ('Gym', 23.00);
+
+INSERT INTO amenities (name, price) VALUES ('Yoga', 10.00);
+
+CREATE TABLE signups (id SERIAL PRIMARY KEY, person_id INT REFERENCES people(id), amenity_id INT REFERENCES amenities(id));
+
+INSERT INTO signups (person_id, amenity_id) VALUES (2, 1);
+
+INSERT INTO signups (person_id, amenity_id) VALUES (2, 2);
+
+INSERT INTO signups (person_id, amenity_id) VALUES (2, 3);
+
+INSERT INTO signups (person_id, amenity_id) VALUES (3, 3);
+
+INSERT INTO signups (person_id, amenity_id) VALUES (4, 3);
