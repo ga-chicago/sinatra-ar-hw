@@ -9,8 +9,8 @@ class StudentController < Sinatra::Base
     response['Access-Control-Allow-Origin'] = '*'
     id = params[:id]
     student = Student.find(id)
-    teacher = student.teacher
-    {student: student, teacher: teacher}.to_json
+    teachers = student.teachers
+    {student: student, teacher: teachers}.to_json
   end
 
   post '/' do

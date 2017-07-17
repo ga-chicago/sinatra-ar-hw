@@ -10,6 +10,7 @@ class TeacherController < Sinatra::Base
     id = params[:id]
     teacher = Teacher.find(id)
     students = teacher.students
+    p students "this is students"
     {teacher: teacher, students: students}.to_json
   end
 
