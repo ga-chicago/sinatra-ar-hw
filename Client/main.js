@@ -1,3 +1,4 @@
+
 $('.albumLink').click(function(e){
 	e.preventDefault();//stops us from following the href
 	var getUrl = $(e.target).attr('href')
@@ -16,8 +17,6 @@ $.ajax({
 			var release_date = parse[i].release_date;
 			var no_of_songs = parse[i].no_of_songs;
 			var cover = parse[i].cover;
-
-			console.log(cover);
 
 			$('#image').append('<img>')
 			$("img").eq(i).attr('src', cover)
@@ -38,6 +37,7 @@ $.ajax({
 	url: getUrl,
 	success: function(response){
 		var parse = jQuery.parseJSON(response);
+		$('#image').empty();
 		$('#data').empty();
 		for (i = 0; i < parse.length; i++){
 
@@ -45,8 +45,6 @@ $.ajax({
 			var time = parse[i].time;
 			var track_order = parse[i].track_order;
 		
-
-
 			$('#data').append('<li>' + name + " " + time + " " + track_order)
 			}
 

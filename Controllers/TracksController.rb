@@ -12,8 +12,11 @@ get '/:id' do
 	
 	response['Access-Control-Allow-Origin'] = '*'
 	id = params[:id]
+	content_type :json
 	track = Track.find(id)
-	track.to_json
+	albums = track.record
+	{track: track, record: albums}.to_json
+	
 end
 
 post '/' do

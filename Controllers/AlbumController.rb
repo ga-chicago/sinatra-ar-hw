@@ -10,8 +10,11 @@ class AlbumController < Sinatra::Base
 	get '/:id' do
 		response['Access-Control-Allow-Origin'] = '*'
 		id = params[:id]
+		content_type :json
 		album = Record.find(id)
-		album.to_json	
+		track = album.track
+		{album: album, track: track}.to_json
+
 	end
 
 	post '/' do
