@@ -42,4 +42,7 @@ INSERT INTO signups (person_id, amenity_id) VALUES (3, 3);
 
 INSERT INTO signups (person_id, amenity_id) VALUES (4, 3);
 
+CREATE TABLE users (id SERIAL PRIMARY KEY, username VARCHAR(255), password_digest VARCHAR(255), token BIGINT);
+
+
 
