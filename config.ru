@@ -1,12 +1,17 @@
 require 'bundler'
 Bundler.require
 
-require "./models/RecordsModel"
+
 require './app'
-require "./models/TracksModel"
+
 require "./controllers/AlbumController"
 require './controllers/TracksController'
+require './controllers/UserController'
+
 require './models/DoodadsModel'
+require "./models/RecordsModel"
+require "./models/TracksModel"
+require './models/UserModel'
 
 run Sinatra::Application
 
@@ -17,3 +22,4 @@ ActiveRecord::Base.establish_connection(
 
 map('/albums'){run AlbumController}
 map('/tracks'){run TracksController}
+map('/users'){run UserController}
