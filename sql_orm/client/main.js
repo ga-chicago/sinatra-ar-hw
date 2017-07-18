@@ -40,6 +40,12 @@ $('.link').click(function(e){
 
 	}
 
+	//use this when you need to attach a listener to a element that wont be there on page load
+	//$('body').on('click', '.link', function(e){
+
+
+	// })
+
 
 
 })

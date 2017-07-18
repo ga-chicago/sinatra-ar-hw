@@ -16,7 +16,9 @@ class TypeController < Sinatra::Base
 
 		id = params[:id]
 		type = Types.find(id)
-		type.to_json
+		park = type.parks
+		{type: type, park: park}.to_json
+		# type.to_json
 
 
 	end

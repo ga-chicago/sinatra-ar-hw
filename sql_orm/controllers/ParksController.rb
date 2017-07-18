@@ -1,4 +1,4 @@
-class ParksController < Sinatra::Base	
+ class ParksController < Sinatra::Base	
 	get '/' do
 		  response['Access-Control-Allow-Origin'] = '*'
   content_type :json
@@ -8,13 +8,25 @@ class ParksController < Sinatra::Base
 		
 	end
 
-	get '/:id' do
+	get '/:id/:token' do
 		  response['Access-Control-Allow-Origin'] = '*'
   content_type :json
 
 		id = params[:id]
+		token = params[:token]
+		user = User.find_by({token: token})
+		if user
 		park = Parks.find(id)
-		park.to_json
+		# member = Member.find(id)
+		types = park.types
+		#put them in a has and return json
+		{parks: park, types: types}.to_json
+		#park.to_json
+
+		else
+
+			"ACCESS DENIED YOU MAY NOT PASS"
+		end
 		
 	end
 
