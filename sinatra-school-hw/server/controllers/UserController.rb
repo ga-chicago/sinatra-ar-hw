@@ -1,7 +1,12 @@
 class UserController < Sinatra::Base
   post '/register' do
     user_details = JSON.parse(request.body.read)
-    user = User.new(user_details)
+    user = User.new=
+
+    user.username = user_details["username"]
+    user.password = user_details["password"]
+    user.token = rand(1..10000000)
+
     user.save
     user.to_json
   end

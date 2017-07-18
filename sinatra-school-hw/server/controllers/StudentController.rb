@@ -1,12 +1,14 @@
 class StudentController < Sinatra::Base
   get '/' do
     response['Access-Control-Allow-Origin'] = '*'
+    content_type :json
     students = Student.all
     students.to_json
   end
 
   get '/:id' do
     response['Access-Control-Allow-Origin'] = '*'
+    content_type :json
     id = params[:id]
     student = Student.find(id)
     teachers = student.teachers
@@ -15,6 +17,7 @@ class StudentController < Sinatra::Base
 
   post '/' do
     response['Access-Control-Allow-Origin'] = '*'
+    content_type :json
     request_body = JSON.parse(request.body.read)
     new_student = Student.new(request_body)
     new_student.save
@@ -24,6 +27,7 @@ class StudentController < Sinatra::Base
 
   patch '/:id' do
     response['Access-Control-Allow-Origin'] = '*'
+    content_type :json
     id = params[:id]
     request_body = JSON.parse(request.body.read)
     student = Student.find(id)
@@ -34,6 +38,7 @@ class StudentController < Sinatra::Base
 
   delete '/:id' do
     response['Access-Control-Allow-Origin'] = '*'
+    content_type :json
     id = params[:id]
     student = Student.find(id)
     student.destroy

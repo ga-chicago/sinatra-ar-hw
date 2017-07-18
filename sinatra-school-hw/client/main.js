@@ -1,13 +1,17 @@
+console.log('test')
 $.ajax({
   method: 'GET',
-  url: 'http://localhost:9393/teachers/1',
+  url: 'http://localhost:9393/teachers/',
   success: function(response){
     // take everyone's data and list it out on the teachers page
-    for (var i = 0; i < response.teachers.length; i++){
-      $('#name').text(response.teachers.name[i]);
-      $('#subject').text(response.teachers.subject[i]);
-      $('#image_url').attr('img', response.teachers.image_url[i]); // or .eq(i)?
-    }
+    $('#tch_name').text(response.teachers.name);
+    console.log(response)
+    $('#subject').text(response.teachers.subject);
+    $('#image_url').attr('src', response.teachers.image_url); // or .eq(i)?
+    // for (var i = 0; i < response.length ; i++){
+    //   $('#students').append('<li>'+response.students[i].name+'</li>')
+    // }
+    // console.log(response)
   }
 })
 
@@ -17,13 +21,15 @@ $.ajax({
 
 $.ajax({
   method: 'GET',
-  url: 'http://localhost:9393/students/1',
+  url: 'http://localhost:9393/students/',
   success: function(response){
-    for (var i = 0; i < response.students.length; i++){
-      $('#name').text(response.students.name[i])
-      $('#grade').text(response.students.grade[i])
-      $('#student_num').text(response.students.student_num[i])
-    }
+    // for (var i = 0; i < response.length; i++){
+      $('#stu_name').text(response.students.name)
+      $('#grade').text("Grade: " + response.students.grade)
+      $('#student_num').text(response.students.student_num)
+      $('#has_teachers').append('<li>'+response.teachers.name+'</li>')
+      console.log(response)
+    // }
   }
 })
 
