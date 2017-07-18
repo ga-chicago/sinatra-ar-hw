@@ -11,7 +11,7 @@ class TeacherController < Sinatra::Base
     content_type :json
     id = params[:id]
     token = params[:token]
-    user = User.find_by({token: token})
+    # user = User.find_by({token: token})
     # if user
       teacher = Teacher.find(id)
       students = teacher.students

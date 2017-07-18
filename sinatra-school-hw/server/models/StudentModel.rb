@@ -1,5 +1,5 @@
 class Student < ActiveRecord::Base
   self.table_name = 'students'
-  has_many :tutelage
-  has_many :teachers, through: :tutelage
+  has_many :tutelages
+  has_many :teachers, through: :tutelages
 end

@@ -5,6 +5,7 @@ require './models/TeacherModel.rb'
 require './controllers/TeacherController.rb'
 require './models/StudentModel.rb'
 require './controllers/StudentController.rb'
+require './models/TutelageModel.rb'
 require './models/UserModel.rb'
 require './controllers/UserController.rb'
 
