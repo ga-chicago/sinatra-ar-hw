@@ -1,0 +1,11 @@
+<div>
+
+<ul>
+	<% @albums.each do |data| %>
+		<img src="#{data.cover}">	
+	 	<li><%= "#{data.band}, #{data.title}, #{data.release_date}, #{data.no_of_songs}" %>
+	 	</li>
+	<% end %>
+</ul>
+
+</div>
